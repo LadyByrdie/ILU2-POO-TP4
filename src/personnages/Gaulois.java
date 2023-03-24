@@ -11,6 +11,7 @@ public class Gaulois extends Personnage {
 	protected String prendreParole() {
 		return "Le gaulois " + super.prendreParole();
 	}
+	
 
 	@Override
 	public String toString() {
