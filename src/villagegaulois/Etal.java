@@ -22,10 +22,6 @@ public class Etal<P extends IProduit> implements IEtal {
 		etalOccupe = true;
 	}
 	
-
-
-
-
 	@Override
 	public Gaulois getVendeur() {
 		return vendeur;
@@ -72,10 +68,12 @@ public class Etal<P extends IProduit> implements IEtal {
 		for (int i = 0; i < nbProduit; i++) {
 		chaine.append("\n- " + produits[i].description());
 		}
+		
 		} else {
 		chaine.append(" n'a plus rien à vendre.");
 		}
 		chaine.append("\n");
+		
 		return chaine.toString();
 	}
 	

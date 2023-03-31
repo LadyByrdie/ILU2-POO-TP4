@@ -1,13 +1,15 @@
 package scenarioTest;
 
 import villagegaulois.Etal;
-import villagegaulois.IEtal;
 import personnages.Gaulois;
 import produit.*;
 
 public class ScenarioTest {
 	public static void main(String[] args) {
-		Etal[] marche= new Etal[3];
+		
+		int nbSanglierAch=0;
+		int nbSanglierManquant=3;
+		
 		Gaulois ordralfabetix = new Gaulois("Ordralfabétix",9);
 		Gaulois obelix = new Gaulois("Obélix",20);
 		Gaulois asterix = new Gaulois("Asterix", 6);
@@ -22,9 +24,32 @@ public class ScenarioTest {
 		Poisson poisson1 = new Poisson("lundi");
 		Poisson[] poissons = {poisson1};
 		
-		marche[0].installerVendeur(sanglier1.getChasseur(),sangliersAsterix,8);
-		marche[1].installerVendeur(obelix, sangliersObelix, 10);
-		marche[2].installerVendeur(ordralfabetix, poissons, 7);
+		Etal<Poisson> etal = new Etal<>();
+		Etal<Sanglier> etal1 = new Etal<>();
+		Etal<Sanglier> etal2 = new Etal<>();
+		etal.installerVendeur(ordralfabetix, poissons, 8);
+		etal1.installerVendeur(asterix, sangliersAsterix, 10);
+		etal2.installerVendeur(obelix, sangliersObelix, 7);
+		Etal[] marche = {etal, etal1, etal2};
+		
+		
+		
+		
+		int i=0;
+
+		while(nbSanglierManquant-nbSanglierAch>0&&i<3) {
+			System.out.println("ETAT MARCHE");
+			for(int j=0;j<marche.length;j++) {
+				marche[j].etatEtal();
+			}
+			
+			if(marche[i].contientProduit("sanglier", nbSanglierManquant)>0) {
+				marche[i].acheterProduit(marche[i].contientProduit("sanglier", nbSanglierManquant));
+			}
+			
+			i++;
+		}
+		
 	}
 	
 }
