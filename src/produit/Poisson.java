@@ -2,40 +2,49 @@ package produit;
 
 public class Poisson extends Produit{
 	private date date;
+	private int nb;
 	
-	private unite unite;
 	
-	
-	public Poisson(produit.date date, produit.unite unite) {
-		super();
-		this.date = date;
-		this.unite = unite.PIECE;
+	public Poisson(String date) {
+		super("poisson",unite.PIECE);
+		this.nb= nb;
+		
+		switch(date) {
+			case "lundi":
+				this.date=produit.date.LUNDI;
+				break;
+			case "mardi":
+				this.date=produit.date.MARDI;
+				break;
+			case "mercredi":
+				this.date=produit.date.MERCREDI;
+				break;
+			case "jeudi":
+				this.date=produit.date.JEUDI;
+				break;
+			case "vendredi":
+				this.date=produit.date.VENDREDI;
+				break;
+			case "samedi":
+				this.date=produit.date.SAMEDI;
+				break;
+			case "dimanche":
+				this.date=produit.date.DIMANCHE;
+				break;
+			
+		}
+	}
+
+
+	public String description(){
+		String jour=date.toString();
+		return "poisson pï¿½chï¿½s"+ jour+"." ;
 	}
 
 
 	@Override
-	public String description(Produit produit) {
-		String jour="";
-		
-		switch(date) {
-		case LUNDI:
-			jour="lundi";
-		case MARDI:
-			jour="mardi";
-		case MERCREDI:
-			jour="mercredi";
-		case JEUDI:
-			jour="jeudi";
-		case VENDREDI:
-			jour="vendredi";
-		case SAMEDI:
-			jour="samedi";
-		case DIMANCHE:
-			jour="dimanche";
-		}
-		
-		
-		return "poisson pêchés"+ jour+"." ;
+	public double calculerPrix(int prix) {
+		return prix;
 	}
 	
 }

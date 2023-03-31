@@ -3,15 +3,13 @@ import personnages.Gaulois;
 
 public class Sanglier extends Produit {
 
-	private unite unite;
 	private Gaulois chasseur;
 	private int poids;
 	
 	
 	
-	public Sanglier(produit.unite unite, Gaulois chasseur, int poids) {
-		super();
-		this.unite = unite.KILOGRAMME;
+	public Sanglier(Gaulois chasseur, int poids) {
+		super("sanglier", unite.KILOGRAMME);
 		this.chasseur = chasseur;
 		this.poids = poids;
 	}
@@ -22,13 +20,6 @@ public class Sanglier extends Produit {
 
 	public Gaulois getChasseur() {
 		return chasseur;
-	}
-	
-
-
-
-	public unite getUnite() {
-		return unite;
 	}
 
 
@@ -42,9 +33,19 @@ public class Sanglier extends Produit {
 
 
 	@Override
-	public String description(Produit produit) {
+	public String description() {
 		
-		return "Sanglier de " +produit+" "+" kg chassé par "+ chasseur;
+		return "Sanglier de " +getPoids()+" "+" kg chassï¿½ par "+ chasseur;
+	}
+
+
+
+
+
+	@Override
+	public double calculerPrix(int prix) {
+		int prixKg=prix*(getPoids()/1000);
+		return prixKg;
 	}
 	
 }
