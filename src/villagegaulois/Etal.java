@@ -19,6 +19,7 @@ public class Etal<P extends IProduit> implements IEtal {
 		this.produits=produits;
 		this.nbProduit=produits.length;
 		this.nbProduitInitial=nbProduit;
+		this.prix=prix;
 		etalOccupe = true;
 	}
 	
@@ -37,9 +38,9 @@ public class Etal<P extends IProduit> implements IEtal {
 		int quantiteAVendre = 0;
 		if (nbProduit != 0 && this.produits[0].getNom().equals(produit)) {
 		if (nbProduit >= quantiteSouhaitee) {
-		quantiteAVendre = quantiteSouhaitee;
+			quantiteAVendre = quantiteSouhaitee;
 		} else {
-		quantiteAVendre = nbProduit;
+			quantiteAVendre = nbProduit;
 		}
 		}
 		return quantiteAVendre;
@@ -52,9 +53,9 @@ public class Etal<P extends IProduit> implements IEtal {
 		prixPaye += produits[i].calculerPrix(prix);
 		}
 		if (nbProduit >= quantiteSouhaite) {
-		nbProduit -= quantiteSouhaite;
+			nbProduit -= quantiteSouhaite;
 		} else {
-		nbProduit = 0;
+			nbProduit = 0;
 		}
 		return prixPaye;
 	}
@@ -63,17 +64,15 @@ public class Etal<P extends IProduit> implements IEtal {
 	public String etatEtal() {
 		StringBuilder chaine = new StringBuilder(vendeur.getNom());
 		if (nbProduit > 0) {
-		chaine.append(" vend ");
-		chaine.append(nbProduit + " produits :");
-		for (int i = 0; i < nbProduit; i++) {
-		chaine.append("\n- " + produits[i].description());
-		}
-		
+			chaine.append(" vend ");
+			chaine.append(nbProduit + " produits :");
+			for (int i = 0; i < nbProduit; i++) {
+				chaine.append("\n- " + produits[i].description());
+			}
 		} else {
-		chaine.append(" n'a plus rien à vendre.");
+			chaine.append(" n'a plus rien à vendre.");
 		}
 		chaine.append("\n");
-		
 		return chaine.toString();
 	}
 	

@@ -35,7 +35,7 @@ public class Sanglier extends Produit {
 	@Override
 	public String description() {
 		
-		return "Sanglier de " +getPoids()+" "+" kg chass� par "+ chasseur;
+		return "Sanglier de " +getPoids()+" "+" kg chass� par "+ chasseur.getNom();
 	}
 
 
@@ -44,7 +44,7 @@ public class Sanglier extends Produit {
 
 	@Override
 	public double calculerPrix(int prix) {
-		int prixKg=prix*(getPoids()/1000);
+		double prixKg=(prix*poids)/1000;
 		return prixKg;
 	}
 	
