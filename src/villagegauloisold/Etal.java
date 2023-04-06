@@ -2,6 +2,8 @@ package villagegauloisold;
 
 import personnages.Gaulois;
 import produit.IProduit;
+import villagegaulois.DepenseMarchand;
+import villagegaulois.IEtal;
 
 public class Etal <T extends IProduit> implements IEtal {
 	private Gaulois vendeur;
@@ -85,3 +87,27 @@ public class Etal <T extends IProduit> implements IEtal {
 	}
 
 }
+
+public DepenseMarchand[] acheterProduit(String produit, int quantiteSouhaitee) {
+	int quantiteAchete=0;
+	DepenseMarchand[] depenseMar= new DepenseMarchand[3];
+	int nbDepense=0;
+	
+	for(IEtal e :marche) {	
+		
+		if(e.contientProduit(produit, quantiteAchete)>0){
+			quantiteAchete= e.contientProduit(produit, quantiteSouhaitee);
+			double prix=e.acheterProduit(e.contientProduit("sanglier",quantiteSouhaitee));
+			
+			quantiteSouhaitee-=quantiteAchete;
+			
+			DepenseMarchand depense=new DepenseMarchand(e.getVendeur(),quantiteAchete,produit,prix);
+			depenseMar[nbDepense]=depense;
+			nbDepense++;
+		}
+	}
+return depenseMar;
+}
+
+
+

@@ -30,15 +30,10 @@ public class ScenarioTest {
 		Etal<Sanglier> etal1 = new Etal<>();
 		Etal<Sanglier> etal2 = new Etal<>();
 	
-		
 		etal.installerVendeur(ordralfabetix, poissons, 7);
 		etal1.installerVendeur(asterix, sangliersAsterix, 10);
 		etal2.installerVendeur(obelix, sangliersObelix, 8);
 		IEtal[] marche = {etal, etal1, etal2};
-		
-		
-		
-		
 		
 		int i=0;
 		System.out.println("ETAT MARCHE");
